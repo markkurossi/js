@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# Tests for the built-in Boolean object.
+#
+
+. $srcdir/defs || exit 1
+
+$js --load $srcdir/defs.js --file $srcdir/boolean.js || exit 1

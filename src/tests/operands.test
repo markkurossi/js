@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# Tests for the byte-code operands.
+#
+
+. $srcdir/defs || exit 1
+
+$js --load $srcdir/defs.js --file $srcdir/operands.js || exit 1

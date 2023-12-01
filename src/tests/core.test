@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# Tests for the global methods.
+#
+
+. $srcdir/defs || exit 1
+
+$js --load $srcdir/defs.js --file $srcdir/core.js || exit 1

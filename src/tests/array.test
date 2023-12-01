@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# Tests for the built-in Array object.
+#
+
+. $srcdir/defs || exit 1
+
+$js --load $srcdir/defs.js --file $srcdir/array.js || exit 1

@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# Tests for the built-in String object.
+#
+
+. $srcdir/defs || exit 1
+
+$js --load $srcdir/defs.js --file $srcdir/string.js || exit 1

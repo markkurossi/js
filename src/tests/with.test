@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# Tests for the with-statement.
+#
+
+. $srcdir/defs || exit 1
+
+$js -Wno-undefined --load $srcdir/defs.js --file $srcdir/with.js || exit 1

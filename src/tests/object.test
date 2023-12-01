@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# Tests for the objects.
+#
+
+. $srcdir/defs || exit 1
+
+$js --load $srcdir/defs.js --file $srcdir/object.js || exit 1

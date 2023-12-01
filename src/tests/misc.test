@@ -1,0 +1,9 @@
+#!/bin/sh
+#
+# Tests for misc features.  For these tests we assume that catch-try
+# works. 
+#
+
+. $srcdir/defs || exit 1
+
+$js --load $srcdir/defs.js --file $srcdir/misc.js || exit 1

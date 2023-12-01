@@ -1,0 +1,74 @@
+1998-10-26  Markku Rossi  <mtr@purple.ngs.fi>
+
+	* operands.js (main): Finished the == and != tests.
+
+1998-10-20  Markku Rossi  <mtr@purple.ngs.fi>
+
+	* misc.test: Added checks for misc features.
+
+1998-10-05  Markku Rossi  <mtr@purple.ngs.fi>
+
+	* operands.js: Added checks for the `mod' operand.
+
+1998-09-15  Markku Rossi  <mtr@purple.ngs.fi>
+
+	* operands.js: Added checks for the `div' operand.
+
+1998-09-10  Markku Rossi  <mtr@purple.ngs.fi>
+
+	* operands.test: Added checks for the byte-code operands.
+
+1998-09-07  Markku Rossi  <mtr@purple.ngs.fi>
+
+	* defs.js (test_panic): Changed to use System.stdout.writeln().
+
+1998-08-14  Markku Rossi  <mtr@purple.ngs.fi>
+
+	* regexp.js (main): Added check for the regular expression
+	literals.
+
+1998-06-08  Markku Rossi  <mtr@ngs.fi>
+
+	* object.test: Added checks for the objects.
+
+1998-06-03  Markku Rossi  <mtr@ngs.fi>
+
+	* string.js (main): Added checks for indexOf() and lastIndexOf()
+	methods.
+
+1998-05-19  Markku Rossi  <mtr@ngs.fi>
+
+	* boolean.test: Implemented test for the Boolean built-in object.
+
+	* array.js (main): Finished the array tests.
+
+1998-05-05  Markku Rossi  <mtr@ngs.fi>
+
+	* core.test: Implemented tests for the core global methods
+	(incomplete).
+
+1998-04-23  Markku Rossi  <mtr@ngs.fi>
+
+	* string.js (main): Implemented tests for the String.substr()
+	method.
+	(main): Implemented tests for the String.slice() method.
+
+1998-04-20  Markku Rossi  <mtr@ngs.fi>
+
+	* regexp.test: Implemented tests for the RegExp built-in
+	(incomplete).
+
+1998-04-16  Markku Rossi  <mtr@ngs.fi>
+
+	* string.test: Implemented tests for the String built-in
+	(incomplete).
+
+1998-04-15  Markku Rossi  <mtr@ngs.fi>
+
+	* with.test: Implemented test for the with statement.
+
+1998-04-14  Markku Rossi  <mtr@ngs.fi>
+
+	* array.test: Added tests for the Array built-in (incomplete).
+
+	* Added tests for the JavaScript interpreter.

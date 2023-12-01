@@ -1,0 +1,39 @@
+
+			      binfmt_js
+			      =========
+
+This is the Linux `binfmt_js' module to execute JS byte-code files
+natively on Linux.  This module is developed by Dmitry M. Golubovsky
+<golubovsky@usa.net> from the Linux binfmt_java module.
+
+The package contains the following files:
+
+  Makefile	Makefile for standalone compilation.
+  README	This file.
+  binfmt_js.c	The source code for the module.
+  binfmt_js.o	A pre-compiled module.
+
+The installation of the module depends on you Linux distribution.
+Dmitry said that he managed to get it work by editing
+`/etc/rc.d/rc.modules' file on his Slackware system.
+
+I got things running with the following steps on Redhat-5.1/i386:
+
+  - copy binfmt_js.o to `/lib/modules/preferred/fs/binfmt_js.o'
+  - add "alias binfmt-448 binfmt_js" to `/etc/conf.modules' file
+  - run command "depmod -a preferred" as root
+  - install the `js' executable to `/usr/local/bin/js':
+
+    $ cd js
+    $ make
+    $ make install
+
+After these steps, the system works smoothly:
+
+  $ echo 'System.stdout.writeln ("Hello, world!");' >hello.js
+  $ js -c hello.js
+  $ chmod a+x hello.jsc
+  $ ./hello.jsc
+  Hello, world!
+
+Markku Rossi <mtr@ngs.fi>
