@@ -1,4 +1,4 @@
-* NGS JavaScript Interpreter
+# NGS JavaScript Interpreter
 
 Welcome to the NGS JavaScript interpreter. The NGS JavaScript is a GPL
 free interpreter for the JavaScript language. The original
@@ -21,8 +21,7 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307,
 USA
 
-
-** Design Goals
+## Design Goals
 
 This implementation is not 100% compatible with the JavaScript
 language found in Netscape's WWW browsers and servers.  To
@@ -45,7 +44,7 @@ virtual machine
 programmable
 : it should be easy to implement large projects with the language
 
-** WWW Home Page and Additional Information
+## WWW Home Page and Additional Information
 
 The WWW home page of the NGS JavaScript interpreter is at the URL:
 
