@@ -45,15 +45,11 @@ This implementation is designed to be:
 
 ## WWW Home Page and Additional Information
 
-The WWW home page of the NGS JavaScript interpreter is at the URL:
+The WWW home page of the NGS JavaScript interpreter is at
+[Github](https://github.com/markkurossi/js).
 
-	https://github.com/markkurossi/js
-
-The home page contains up-to-date information about the interpreter,
-its development, releases, documentation, etc.
-
-Please note that the current version, js-0.2.0, is a work in progress.
-It contains bugs, and many features still need to be implemented.
+Please note that the current version is a work in progress.  It
+contains bugs, and many features still need to be implemented.
 
 Comments, suggestions, bug reports and fixes, feature wishes, etc. are
 welcome.
