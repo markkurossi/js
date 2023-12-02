@@ -30,19 +30,18 @@ the implementation compared to Netscape's implementation.
 
 This implementation is designed to be:
 
-re-entrant
-: the interpreter can be safely used in multi-threaded environments
+ - re-entrant: the interpreter can be safely used in multi-threaded
+   environments
 
-extendible
-: the interpreter API allows user-defined commands and classes, and it
-allows reading and setting language's global variables
+ - extendible: the interpreter API allows user-defined commands and
+   classes, and it allows reading and setting language's global
+   variables
 
-fast
-: the JavaScript code is compiled to byte-code that is executed by a
-virtual machine
+ - fast: the JavaScript code is compiled to byte-code that is executed
+   by a virtual machine
 
-programmable
-: it should be easy to implement large projects with the language
+ - programmable: it should be easy to implement large projects with
+   the language
 
 ## WWW Home Page and Additional Information
 
