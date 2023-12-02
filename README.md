@@ -1,4 +1,3 @@
-
 * NGS JavaScript Interpreter
 
 Welcome to the NGS JavaScript interpreter. The NGS JavaScript is a GPL
