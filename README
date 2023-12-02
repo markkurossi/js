@@ -1,6 +1,5 @@
 
-		      NGS JavaScript Interpreter
-		      ==========================
+* NGS JavaScript Interpreter
 
 Welcome to the NGS JavaScript interpreter. The NGS JavaScript is a GPL
 free interpreter for the JavaScript language. The original
@@ -24,7 +23,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307,
 USA
 
 
-* Design Goals
+** Design Goals
 
 This implementation is not 100% compatible with the JavaScript
 language found in Netscape's WWW browsers and servers.  To
@@ -33,26 +32,21 @@ the implementation compared to Netscape's implementation.
 
 This implementation is designed to be:
 
-- re-entrant
+re-entrant
+: the interpreter can be safely used in multi-threaded environments
 
-  the interpreter can be safely used in multi-threaded environments
+extendible
+: the interpreter API allows user-defined commands and classes, and it
+allows reading and setting language's global variables
 
-- extendible
+fast
+: the JavaScript code is compiled to byte-code that is executed by a
+virtual machine
 
-  the interpreter API allows user-defined commands and classes, and it
-  allows reading and setting language's global variables
+programmable
+: it should be easy to implement large projects with the language
 
-- fast
-
-  the JavaScript code is compiled to byte-code that is executed by a
-  virtual machine
-
-- programmable
-
-  it should be easy to implement large projects with the language
-
-
-* WWW Home Page and Additional Information
+** WWW Home Page and Additional Information
 
 The WWW home page of the NGS JavaScript interpreter is at the URL:
 
@@ -67,4 +61,4 @@ It contains bugs, and many features still need to be implemented.
 Comments, suggestions, bug reports and fixes, feature wishes, etc. are
 welcome.
 
-	Markku Rossi <mtr@iki.fi>
+Markku Rossi <mtr@iki.fi>
