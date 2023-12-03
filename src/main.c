@@ -569,7 +569,8 @@ main (int argc, char *argv[])
 
       for (i = 0; optind + i < argc; i++)
 	js_type_make_string (interp, &args.u.array->data[i],
-			     argv[optind + i], strlen (argv[optind + i]));
+			     (unsigned char *) argv[optind + i],
+                             strlen (argv[optind + i]));
 
       js_set_var (interp, "ARGS", &args);
 
