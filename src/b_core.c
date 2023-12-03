@@ -53,13 +53,13 @@
  * Types and definitions.
  */
 
-#define EMIT_TO_RESULT(c)						\
-  do {									\
-    result_return->u.vstring->data =					\
-    js_vm_realloc (vm, result_return->u.vstring->data,			\
-		   result_return->u.vstring->len + 1);			\
-   result_return->u.vstring->data[result_return->u.vstring->len] = (c); \
-   result_return->u.vstring->len += 1;					\
+#define EMIT_TO_RESULT(c)                                               \
+do {                                                                    \
+  result_return->u.vstring->data =                                      \
+    js_vm_realloc (vm, result_return->u.vstring->data,                  \
+                   result_return->u.vstring->len + 1);                  \
+  result_return->u.vstring->data[result_return->u.vstring->len] = (c);  \
+  result_return->u.vstring->len += 1;                                   \
  } while (0)
 
 
