@@ -1,5 +1,7 @@
 /*
  * The builtin Function object.
+ *
+ * Copyright (c) 2023 Markku Rossi <mtr@iki.fi>
  * Copyright (c) 1998 New Generation Software (NGS) Oy
  *
  * Author: Markku Rossi <mtr@ngs.fi>
@@ -47,8 +49,6 @@ static int
 property (JSVirtualMachine *vm, JSBuiltinInfo *builtin_info,
 	  void *instance_context, JSSymbol property, int set, JSNode *node)
 {
-  JSNode *n = instance_context;
-
   if (!set)
     node->type = JS_UNDEFINED;
 

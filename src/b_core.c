@@ -1,5 +1,7 @@
 /*
  * Core builtins for the JavaScript VM.
+ *
+ * Copyright (c) 2023 Markku Rossi <mtr@iki.fi>
  * Copyright (c) 1998 New Generation Software (NGS) Oy
  *
  * Author: Markku Rossi <mtr@ngs.fi>
@@ -187,7 +189,7 @@ escape_global_method (JSVirtualMachine *vm, JSBuiltinInfo *builtin_info,
 	{
 	  unsigned char buf[6];
 
-	  sprintf (buf, "%04x", c);
+	  sprintf ((char *) buf, "%04x", c);
 	  EMIT_TO_RESULT ('%');
 	  EMIT_TO_RESULT ('u');
 	  EMIT_TO_RESULT (buf[0]);
@@ -198,7 +200,7 @@ escape_global_method (JSVirtualMachine *vm, JSBuiltinInfo *builtin_info,
     else
       {
 	unsigned char buf[4];
-	sprintf (buf, "%02x", c);
+	sprintf ((char *) buf, "%02x", c);
 
 	EMIT_TO_RESULT ('%');
 	EMIT_TO_RESULT (buf[0]);

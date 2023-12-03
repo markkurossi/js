@@ -1,5 +1,7 @@
 /*
  * Common parts for the JavaScript virtual machine.
+ *
+ * Copyright (c) 2023 Markku Rossi <mtr@iki.fi>
  * Copyright (c) 1998 New Generation Software (NGS) Oy
  *
  * Author: Markku Rossi <mtr@ngs.fi>
@@ -412,8 +414,8 @@ js_vm_execute (JSVirtualMachine *vm, JSByteCode *bc)
 		      JS_BC_READ_INT32 (cp + ui, length);
 		      ui += 4;
 
-		      js_builtin_RegExp_new (vm, cp + ui, length, flags, 1,
-					     NULL, c);
+		      js_builtin_RegExp_new (vm, (char *) cp + ui, length,
+                                             flags, 1, NULL, c);
 		      ui += length;
 		    }
 		    break;

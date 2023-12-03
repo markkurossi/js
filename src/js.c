@@ -1,5 +1,7 @@
 /*
  * JavaScript interpreter main glue.
+ *
+ * Copyright (c) 2023 Markku Rossi <mtr@iki.fi>
  * Copyright (c) 1998-1999 New Generation Software (NGS) Oy
  *
  * Author: Markku Rossi <mtr@ngs.fi>
@@ -1001,7 +1003,7 @@ js_type_make_string (JSInterpPtr interp, JSType *type, unsigned char *data,
 {
   JSNode *n = (JSNode *) type;
 
-  js_vm_make_string (interp->vm, n, data, length);
+  js_vm_make_string (interp->vm, n, (char *) data, length);
 }
 
 
@@ -1470,7 +1472,6 @@ call_method_global_method (JSVirtualMachine *vm, JSBuiltinInfo *builtin_info,
 			   void *instance_context,
 			   JSNode *result_return, JSNode *args)
 {
-  JSInterpPtr interp = instance_context;
   JSNode *argv;
   int i;
   int result;

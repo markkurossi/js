@@ -1,5 +1,7 @@
 /*
  * Optimized `jumps' instruction dispatcher.
+ *
+ * Copyright (c) 2023 Markku Rossi <mtr@iki.fi>
  * Copyright (c) 1998 New Generation Software (NGS) Oy
  *
  * Author: Markku Rossi <mtr@ngs.fi>
@@ -136,7 +138,6 @@ static void
 function_destroy (void *ptr)
 {
   Function *f = ptr;
-  int i;
 
   /* Name. */
   js_free (f->name);
@@ -177,7 +178,6 @@ js_vm_jumps_exec (JSVirtualMachine *vm, JSByteCode *bc, JSSymtabEntry *symtab,
   Compiled *pc = NULL;
   char *debug_filename = "unknown";
   char buf[512];
-  unsigned int opcount = 0;
 
   if (bc)
     {

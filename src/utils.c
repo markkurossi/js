@@ -1,5 +1,7 @@
 /*
  * General utilites.
+ *
+ * Copyright (c) 2023 Markku Rossi <mtr@iki.fi>
  * Copyright (c) 1998 New Generation Software (NGS) Oy
  *
  * Author: Markku Rossi <mtr@ngs.fi>
@@ -354,7 +356,7 @@ js_vm_to_object (JSVirtualMachine *vm, const JSNode *n, JSNode *result_return)
       break;
 
     case JS_STRING:
-      js_vm_make_string (vm, result_return, n->u.vstring->data,
+      js_vm_make_string (vm, result_return, (char * ) n->u.vstring->data,
 			 n->u.vstring->len);
       break;
 
