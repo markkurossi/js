@@ -12,6 +12,9 @@ libjs_SOURCES := src/bc.c src/heap.c src/object.c src/debug.c		\
 		src/xmd5.c src/md5c.c
 
 libjs_OBJS := $(patsubst %.c,%.o,$(libjs_SOURCES))
+
+CLEAN_TARGETS += $(libjs_OBJS)
+
 INCLUDES += -Isrc
 
 src/libjs.a: $(libjs_OBJS)
