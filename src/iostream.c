@@ -1,8 +1,8 @@
 /*
  * I/O streams.
- * Copyright (c) 1998 New Generation Software (NGS) Oy
  *
- * Author: Markku Rossi <mtr@ngs.fi>
+ * Copyright (c) 2023 Markku Rossi <mtr@iki.fi>
+ * Copyright (c) 1998 New Generation Software (NGS) Oy
  */
 
 /*
@@ -233,7 +233,7 @@ js_iostream_read (JSIOStream *stream, void *ptr, size_t size)
 
 	  stream->bufpos += got;
 	  size -= got;
-	  (unsigned char *) ptr += got;
+	  ptr += got;
 	  total += got;
 	}
       else
@@ -290,7 +290,7 @@ js_iostream_write (JSIOStream *stream, void *ptr, size_t size)
       stream->data_in_buf += space;
       total += space;
       size -= space;
-      (unsigned char *) ptr += space;
+      ptr += space;
 
       /* Now the buffer contains buffered write data. */
       stream->writep = 1;

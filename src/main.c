@@ -1,8 +1,8 @@
 /*
  * The JS shell
- * Copyright (c) 1998 New Generation Software (NGS) Oy
  *
- * Author: Markku Rossi <mtr@ngs.fi>
+ * Copyright (c) 2023 Markku Rossi <mtr@iki.fi>
+ * Copyright (c) 1998 New Generation Software (NGS) Oy
  */
 
 /*
