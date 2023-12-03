@@ -1,5 +1,7 @@
 /*
  * The builtin File object.
+ *
+ * Copyright (c) 2023 Markku Rossi <mtr@iki.fi>
  * Copyright (c) 1998-1999 New Generation Software (NGS) Oy
  *
  * Author: Markku Rossi <mtr@ngs.fi>
@@ -530,7 +532,6 @@ method (JSVirtualMachine *vm, JSBuiltinInfo *builtin_info,
       /* ***************************************************************** */
       else if (method == ctx->s_readln)
 	{
-	  int ch;
 	  unsigned int bufpos = 0;
 	  unsigned int buflen = 0;
 	  char *buffer = NULL;
@@ -562,8 +563,6 @@ method (JSVirtualMachine *vm, JSBuiltinInfo *builtin_info,
 
 		  if (ictx->stream->bufpos >= ictx->stream->data_in_buf)
 		    {
-		      int result;
-
 		      /* Read past the buffer. */
 		      if (ictx->stream->at_eof)
 			/* EOF seen. */

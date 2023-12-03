@@ -1,5 +1,7 @@
 /*
  * The builtin Date object.
+ *
+ * Copyright (c) 2023 Markku Rossi <mtr@iki.fi>
  * Copyright (c) 1998 New Generation Software (NGS) Oy
  *
  * Author: Markku Rossi <mtr@ngs.fi>
@@ -610,7 +612,6 @@ new_proc (JSVirtualMachine *vm, JSBuiltinInfo *builtin_info, JSNode *args,
 	  JSNode *result_return)
 {
   DateInstanceCtx *instance;
-  time_t seconds = 0;		/* Initialized to keep compiler quiet. */
 
   instance = js_calloc (vm, 1, sizeof (*instance));
 

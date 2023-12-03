@@ -1,5 +1,7 @@
 /*
  * The builtin Directory object.
+ *
+ * Copyright (c) 2023 Markku Rossi <mtr@iki.fi>
  * Copyright (c) 1998-1999 New Generation Software (NGS) Oy
  *
  * Author: Markku Rossi <mtr@ngs.fi>
@@ -212,11 +214,6 @@ method (JSVirtualMachine *vm, JSBuiltinInfo *builtin_info,
 
  not_open:
   sprintf (vm->error, "Directory.%s(): directory is no opened",
-	   js_vm_symname (vm, method));
-  js_vm_error (vm);
-
- insecure_feature:
-  sprintf (vm->error, "Directory.%s(): not allowed in secure mode",
 	   js_vm_symname (vm, method));
   js_vm_error (vm);
 

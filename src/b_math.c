@@ -1,5 +1,7 @@
 /*
  * The builtin Math object.
+ *
+ * Copyright (c) 2023 Markku Rossi <mtr@iki.fi>
  * Copyright (c) 1998 New Generation Software (NGS) Oy
  *
  * Author: Markku Rossi <mtr@ngs.fi>
@@ -349,11 +351,6 @@ method (JSVirtualMachine *vm, JSBuiltinInfo *builtin_info,
 
  argument_error:
   sprintf (vm->error, "Math.%s(): illegal amount of arguments",
-	   js_vm_symname (vm, method));
-  js_vm_error (vm);
-
- argument_type_error:
-  sprintf (vm->error, "Math.%s(): illegal argument",
 	   js_vm_symname (vm, method));
   js_vm_error (vm);
 

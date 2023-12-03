@@ -1,5 +1,7 @@
 /*
  * The builtin String object.
+ *
+ * Copyright (c) 2023 Markku Rossi <mtr@iki.fi>
  * Copyright (c) 1998-1999 New Generation Software (NGS) Oy
  *
  * Author: Markku Rossi <mtr@ngs.fi>
@@ -213,7 +215,7 @@ method (JSVirtualMachine *vm, JSBuiltinInfo *builtin_info,
 	    }
 	}
 
-      js_vm_make_static_string (vm, result_return, buffer, bufpos);
+      js_vm_make_static_string (vm, result_return, (char *) buffer, bufpos);
       result_return->u.vstring->staticp = 0;
     }
   /* ********************************************************************** */
@@ -442,8 +444,8 @@ method (JSVirtualMachine *vm, JSBuiltinInfo *builtin_info,
 	      || args[1].u.vbuiltin->info != ctx->regexp_info)
 	    goto argument_type_error;
 
-	  js_builtin_RegExp_match (vm, n->u.vstring->data, n->u.vstring->len,
-				   &args[1], result_return);
+	  js_builtin_RegExp_match (vm, (char *) n->u.vstring->data,
+                                   n->u.vstring->len, &args[1], result_return);
 	}
       /* ***************************************************************** */
       else if (method == ctx->s_replace)
@@ -456,9 +458,10 @@ method (JSVirtualMachine *vm, JSBuiltinInfo *builtin_info,
 	      || args[2].type != JS_STRING)
 	    goto argument_type_error;
 
-	  js_builtin_RegExp_replace (vm, n->u.vstring->data, n->u.vstring->len,
-				     &args[1], args[2].u.vstring->data,
-				     args[2].u.vstring->len, result_return);
+	  js_builtin_RegExp_replace (vm, (char *) n->u.vstring->data,
+                                     n->u.vstring->len, &args[1],
+                                     (char *) args[2].u.vstring->data,
+                                     args[2].u.vstring->len, result_return);
 	}
       /* ***************************************************************** */
       else if (method == ctx->s_search)
@@ -470,8 +473,8 @@ method (JSVirtualMachine *vm, JSBuiltinInfo *builtin_info,
 	      || args[1].u.vbuiltin->info != ctx->regexp_info)
 	    goto argument_type_error;
 
-	  js_builtin_RegExp_search (vm, n->u.vstring->data, n->u.vstring->len,
-				    &args[1], result_return);
+	  js_builtin_RegExp_search (vm, (char *) n->u.vstring->data,
+                                    n->u.vstring->len, &args[1], result_return);
 	}
       /* ***************************************************************** */
       else if (method == ctx->s_slice)
@@ -511,7 +514,8 @@ method (JSVirtualMachine *vm, JSBuiltinInfo *builtin_info,
 	  if (start > end)
 	    end = start;
 
-	  js_vm_make_string (vm, result_return, n->u.vstring->data + start,
+	  js_vm_make_string (vm, result_return,
+                             (char *) n->u.vstring->data + start,
 			     end - start);
 	}
       /* ***************************************************************** */
@@ -521,7 +525,8 @@ method (JSVirtualMachine *vm, JSBuiltinInfo *builtin_info,
 	    {
 	      js_vm_make_array (vm, result_return, 1);
 	      js_vm_make_string (vm, &result_return->u.varray->data[0],
-				 n->u.vstring->data, n->u.vstring->len);
+				 (char *) n->u.vstring->data,
+                                 n->u.vstring->len);
 	    }
 	  else
 	    {
@@ -560,7 +565,8 @@ method (JSVirtualMachine *vm, JSBuiltinInfo *builtin_info,
 			  js_vm_make_string (vm,
 					     &(result_return
 					       ->u.varray->data[alen]),
-					     n->u.vstring->data + start,
+					     (char *) (n->u.vstring->data
+                                                       + start),
 					     pos - start);
 			  alen++;
 
@@ -585,14 +591,14 @@ method (JSVirtualMachine *vm, JSBuiltinInfo *builtin_info,
 		      js_vm_expand_array (vm, result_return, alen + 1);
 		      js_vm_make_string (vm,
 					 &result_return->u.varray->data[alen],
-					 n->u.vstring->data + start,
+					 (char *) n->u.vstring->data + start,
 					 n->u.vstring->len - start);
 		    }
 		}
 	      else if (args[1].type == JS_BUILTIN
 		       && args[1].u.vbuiltin->info == ctx->regexp_info)
 		{
-		  js_builtin_RegExp_split (vm, n->u.vstring->data,
+		  js_builtin_RegExp_split (vm, (char *) n->u.vstring->data,
 					   n->u.vstring->len, &args[1],
 					   limit, result_return);
 		}
@@ -635,7 +641,8 @@ method (JSVirtualMachine *vm, JSBuiltinInfo *builtin_info,
 	  if (start + length > n->u.vstring->len)
 	    length = n->u.vstring->len - start;
 
-	  js_vm_make_string (vm, result_return, n->u.vstring->data + start,
+	  js_vm_make_string (vm, result_return,
+                             (char *) n->u.vstring->data + start,
 			     length);
 	}
       /* ***************************************************************** */
@@ -675,7 +682,8 @@ method (JSVirtualMachine *vm, JSBuiltinInfo *builtin_info,
 	      js_vm_error (vm);
 	    }
 
-	  js_vm_make_string (vm, result_return, n->u.vstring->data + start,
+	  js_vm_make_string (vm, result_return,
+                             (char *) n->u.vstring->data + start,
 			     end - start);
 	}
       /* ***************************************************************** */
@@ -684,7 +692,7 @@ method (JSVirtualMachine *vm, JSBuiltinInfo *builtin_info,
 	  if (args->u.vinteger != 0)
 	    goto argument_type_error;
 
-	  js_vm_make_string (vm, result_return, n->u.vstring->data,
+	  js_vm_make_string (vm, result_return, (char *) n->u.vstring->data,
 			     n->u.vstring->len);
 
 	  for (i = 0; i < result_return->u.vstring->len; i++)
@@ -697,7 +705,7 @@ method (JSVirtualMachine *vm, JSBuiltinInfo *builtin_info,
 	  if (args->u.vinteger != 0)
 	    goto argument_type_error;
 
-	  js_vm_make_string (vm, result_return, n->u.vstring->data,
+	  js_vm_make_string (vm, result_return, (char *) n->u.vstring->data,
 			     n->u.vstring->len);
 
 	  for (i = 0; i < result_return->u.vstring->len; i++)
@@ -869,7 +877,7 @@ new_proc (JSVirtualMachine *vm, JSBuiltinInfo *builtin_info, JSNode *args,
 	  source = &source_n;
 	}
 
-      js_vm_make_string (vm, result_return, source->u.vstring->data,
+      js_vm_make_string (vm, result_return, (char *) source->u.vstring->data,
 			 source->u.vstring->len);
     }
   else
