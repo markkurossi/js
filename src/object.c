@@ -1,5 +1,7 @@
 /*
  * User object handling.
+ *
+ * Copyright (c) 2023 Markku Rossi <mtr@iki.fi>
  * Copyright (c) 1998 New Generation Software (NGS) Oy
  *
  * Author: Markku Rossi <mtr@ngs.fi>
@@ -423,13 +425,13 @@ js_vm_object_nth (JSVirtualMachine *vm, JSObject *obj, int nth,
       sprintf (buf,
 	       "js_vm_object_nth(): chain didn't contain that many items%s",
 	       JS_HOST_LINE_BREAK);
-      js_iostream_write (vm->s_stderr, buf, strlen (buf));
+      js_iostream_write (vm->s_stderr, (unsigned char *) buf, strlen (buf));
       js_iostream_flush (vm->s_stderr);
 
       abort ();
     }
 
-  js_vm_make_string (vm, value_return, b->data, b->len);
+  js_vm_make_string (vm, value_return, (char *) b->data, b->len);
 
   return 1;
 }

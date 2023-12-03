@@ -1,5 +1,7 @@
 /*
  * Debugging utilities.
+ *
+ * Copyright (c) 2023 Markku Rossi <mtr@iki.fi>
  * Copyright (c) 1998 New Generation Software (NGS) Oy
  *
  * Author: Markku Rossi <mtr@ngs.fi>
@@ -43,9 +45,8 @@ js_vm_stacktrace (JSVirtualMachine *vm, unsigned int num_frames)
   void *pc = vm->pc;
   JSNode *fp;
   char buf[512];
-  int i;
 
-  sprintf (buf, "VM: stacktrace: stacksize=%d, used=%d%s",
+  sprintf (buf, "VM: stacktrace: stacksize=%d, used=%ld%s",
 	   vm->stack_size,
 	   (vm->stack + vm->stack_size - sp),
 	   JS_HOST_LINE_BREAK);
