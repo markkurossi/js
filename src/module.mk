@@ -1,4 +1,4 @@
-ALL_TARGETS += src/js src/libjs.a
+ALL_TARGETS += src/js src/libjs.a src/make-data
 
 libjs_SOURCES := src/bc.c src/heap.c src/object.c src/debug.c		\
 src/compiler.c src/js.c src/vm.c src/vmswitch.c src/vmjumps.c		\
@@ -24,5 +24,8 @@ src/libjs.a: $(libjs_OBJS)
 	@rm -f $@
 	ar cr $@ $+
 
-src/js: src/main.c src/getopt.c src/getopt1.c src/libjs.a
+src/js: src/main.o src/getopt.o src/getopt1.o src/libjs.a
 	$(CC) $(DEFINES) $(INCLUDES) -o $@ $+ -ldl
+
+src/make-data: src/make-data.o
+	$(CC) $(DEFINES) $(INCLUDES) -o $@ $+
