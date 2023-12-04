@@ -6,6 +6,7 @@ MODULES := src
 
 ALL_TARGETS :=
 CLEAN_TARGETS :=
+CFLAGS := -Wall -Wno-string-plus-int
 DEFINES := -DHAVE_CONFIG_H
 INCLUDES := -I.
 
@@ -18,4 +19,4 @@ clean:
 	rm -f $(CLEAN_TARGETS) $(ALL_TARGETS)
 
 %.o : %.c
-	$(CC) -Wall -Wno-string-plus-int $(DEFINES) $(INCLUDES) -c -o $@ $<
+	$(CC) $(CFLAGS) $(DEFINES) $(INCLUDES) -c $< -o $@
