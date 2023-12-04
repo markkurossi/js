@@ -1,5 +1,7 @@
 /*
  * The MD5 extension.
+ *
+ * Copyright (c) 2023 Markku Rossi <mtr@iki.fi>
  * Copyright (c) 1998 New Generation Software (NGS) Oy
  *
  * Author: Markku Rossi <mtr@ngs.fi>
@@ -96,7 +98,7 @@ method (JSVirtualMachine *vm, JSBuiltinInfo *builtin_info,
 	    goto argument_error;
 
 	  MD5Final (final, ictx);
-	  js_vm_make_string (vm, result_return, final, 16);
+	  js_vm_make_string (vm, result_return, (char *) final, 16);
 	}
       /* ***************************************************************** */
       else if (method == ctx->s_init)

@@ -1,5 +1,7 @@
 /*
  * JavaScript extension.
+ *
+ * Copyright (c) 2023 Markku Rossi <mtr@iki.fi>
  * Copyright (c) 1998 New Generation Software (NGS) Oy
  *
  * Author: Markku Rossi <mtr@ngs.fi>
@@ -87,7 +89,7 @@ copy_from_type_to_node (JSVirtualMachine *vm, JSNode *to, JSType *from)
       break;
 
     case JS_TYPE_STRING:
-      js_vm_make_string (vm, to, from->u.s->data, from->u.s->len);
+      js_vm_make_string (vm, to, (char *) from->u.s->data, from->u.s->len);
       break;
 
     case JS_TYPE_DOUBLE:
@@ -210,7 +212,7 @@ method (JSVirtualMachine *vm, JSBuiltinInfo *builtin_info,
 
 	  result_return->type = JS_BOOLEAN;
 	  result_return->u.vboolean
-	    = (js_eval_data (instance->interp, args[1].u.vstring->data,
+	    = (js_eval_data (instance->interp, (char *) args[1].u.vstring->data,
 			     args[1].u.vstring->len) != 0);
 	}
       /* ***************************************************************** */
