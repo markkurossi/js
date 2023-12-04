@@ -7,10 +7,11 @@ MODULES := src src/tests jsc/tests examples
 ALL_TARGETS :=
 CLEAN_TARGETS :=
 TESTS :=
-CFLAGS := -Wall -Wno-string-plus-int -g
+CFLAGS := -Wall -Wno-string-plus-int -g -fPIC -DPIC
 DEFINES :=
 INCLUDES := -I. -Isrc
 LDFLAGS := -Lsrc -g
+SO_LDFLAGS := $(LDFLAGS) -shared
 
 
 -include $(patsubst %,$(TOP_SRCDIR)/%/module.mk,$(MODULES))
