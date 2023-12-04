@@ -23,7 +23,7 @@ clean:
 	$(CC) $(CFLAGS) $(DEFINES) $(INCLUDES) -c $< -o $@
 
 check:
-	for test in $(TESTS); do\
+	@for test in $(TESTS); do\
 	  echo $$test; \
 	  (cd `dirname $$test`; srcdir=. ./`basename $$test`); \
 	done
