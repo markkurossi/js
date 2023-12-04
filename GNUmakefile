@@ -8,7 +8,7 @@ ALL_TARGETS :=
 CLEAN_TARGETS :=
 TESTS :=
 CFLAGS := -Wall -Wno-string-plus-int
-DEFINES := -DHAVE_CONFIG_H
+DEFINES :=
 INCLUDES := -I.
 
 

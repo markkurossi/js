@@ -29,9 +29,7 @@
 # define _NO_PROTO
 #endif
 
-#ifdef HAVE_CONFIG_H
-# include <jsconfig.h>
-#endif
+#include <jsconfig.h>
 
 #if !defined __STDC__ || !__STDC__
 /* This is a separate conditional since some stdc systems

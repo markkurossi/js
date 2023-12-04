@@ -19,9 +19,7 @@
    Foundation, Inc., 51 Franklin Street - Fifth Floor, Boston, MA 02110-1301,
    USA.  */
 
-#ifdef HAVE_CONFIG_H
 #include <jsconfig.h>
-#endif
 
 #if !defined __STDC__ || !__STDC__
 /* This is a separate conditional since some stdc systems

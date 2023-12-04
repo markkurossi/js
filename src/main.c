@@ -27,9 +27,7 @@
  * $Id: main.c,v 1.8 1998/10/02 07:32:33 mtr Exp $
  */
 
-#if HAVE_CONFIG_H
-#include "jsconfig.h"
-#endif
+#include <jsconfig.h>
 
 #include <stdio.h>
 #include <assert.h>
