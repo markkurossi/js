@@ -3,4 +3,5 @@ phony_targets := all clean check
 .PHONY: $(phony_targets)
 
 $(phony_targets) :
-	$(MAKE) subdir="$(CURDIR)" -C "$(TOP_SRCDIR)" $@
+	@echo "Entering directory \`$(TOP_SRCDIR)'"
+	@$(MAKE) subdir="$(CURDIR)" -C "$(TOP_SRCDIR)" $@
