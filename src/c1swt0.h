@@ -407,4 +407,3 @@ case 74:
   JS_BC_WRITE_INT32 (cp, i);
   cp += 4;
   break;
-

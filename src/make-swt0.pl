@@ -1,6 +1,8 @@
-#!/usr/local/bin/perl -w
+#!/usr/bin/env perl
 #
 # Create link and execute definitions for switch-basic dispatch method.
+#
+# Copyright (c) 2023 Markku Rossi <mtr@iki.fi>
 # Copyright (c) 1998 New Generation Software (NGS) Oy
 #
 # Author: Markku Rossi <mtr@ngs.fi>
@@ -53,6 +55,9 @@ while (<>) {
 	    $f_jump = 1;
 	}
 
+        if ($opcount > 0) {
+            print CFP "\n";
+        }
 	if ($linenumbers) {
 	    printf CFP ("#line %d \"%s\"\n", $. - 1, $ARGV);
 	}
@@ -71,11 +76,14 @@ while (<>) {
 	    printf CFP "  JS_BC_WRITE_INT32 (cp, i);\n";
 	}
 	print CFP "  cp += $args;\n";
-	print CFP "  break;\n\n";
+	print CFP "  break;\n";
     } else {
 	next;
     }
 
+    if ($opcount > 0) {
+        print EFP "\n";
+    }
     if ($linenumbers) {
 	printf EFP "#line %d\"%s\"\n", $. - 1, $ARGV;
     }
@@ -83,7 +91,7 @@ while (<>) {
     print EFP "case $opcount:\n";
     while (<>) {
 	if (/^\}/) {
-	    print EFP "  break;\n\n";
+	    print EFP "  break;\n";
 	    last;
 	}
 	print EFP;

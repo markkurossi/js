@@ -1,6 +1,8 @@
-#!/usr/local/bin/perl -w
+#!/usr/bin/env perl
 #
 # Opcode extractor.
+#
+# Copyright (c) 2023 Markku Rossi <mtr@iki.fi>
 # Copyright (c) 1997-1998 New Generation Software (NGS) Oy
 #
 # Author: Markku Rossi <mtr@ngs.fi>

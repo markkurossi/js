@@ -1,6 +1,8 @@
-#!/usr/local/bin/perl -w
+#!/usr/bin/env perl
 #
 # Create link and execute definitions for switch dispatch method.
+#
+# Copyright (c) 2023 Markku Rossi <mtr@iki.fi>
 # Copyright (c) 1998 New Generation Software (NGS) Oy
 #
 # Author: Markku Rossi <mtr@ngs.fi>
@@ -56,13 +58,15 @@ while (<>) {
 	    $f_jump = 1;
 	}
 
-	if ($linenumbers) {
-	    printf CFP ("#line %d \"%s\"\n", $. - 1, $ARGV);
-	}
-
 	#
 	# Compilation phase 1.
 	#
+        if ($opcount > 0) {
+            print CFP "\n";
+        }
+	if ($linenumbers) {
+	    printf CFP ("#line %d \"%s\"\n", $. - 1, $ARGV);
+	}
 	print CFP "/* operand $operand ($opcount) */\n";
 	print CFP "case $opcount:\n";
 	print CFP "  SAVE_OP ($opcount);\n";
@@ -96,7 +100,7 @@ while (<>) {
 	}
 
 	print CFP "  cp += $args;\n";
-	print CFP "  break;\n\n";
+	print CFP "  break;\n";
     } else {
 	next;
     }
@@ -104,6 +108,9 @@ while (<>) {
     #
     # Compilation phase 2.
     #
+    if ($opcount > 0) {
+        print CFP2 "\n";
+    }
     if ($linenumbers) {
 	printf CFP2 "#line %d \"%s\"\n", $. - 1, $ARGV;
     }
@@ -125,11 +132,14 @@ while (<>) {
 	print CFP2 "  cp += $args;\n";
 	print CFP2 "  cpos++;\n";
     }
-    print CFP2 "  break;\n\n";
+    print CFP2 "  break;\n";
 
     #
     # Execution.
     #
+    if ($opcount > 0) {
+        print EFP "\n";
+    }
     if ($linenumbers) {
 	printf EFP "#line %d\"%s\"\n", $. - 1, $ARGV;
     }
@@ -137,7 +147,7 @@ while (<>) {
     print EFP "case $opcount:\n";
     while (<>) {
 	if (/^\}/) {
-	    print EFP "  break;\n\n";
+	    print EFP "  break;\n";
 	    last;
 	}
 	print EFP;
