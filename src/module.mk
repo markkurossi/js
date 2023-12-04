@@ -18,14 +18,12 @@ libjs_OBJS := $(patsubst %.c,%.o,$(libjs_SOURCES))
 
 CLEAN_TARGETS += $(libjs_OBJS)
 
-INCLUDES += -Isrc
-
 src/libjs.a: $(libjs_OBJS)
 	@rm -f $@
 	ar cr $@ $+
 
 src/js: src/main.o src/getopt.o src/getopt1.o src/libjs.a
-	$(CC) $(DEFINES) $(INCLUDES) -o $@ $+ -ldl
+	$(CC) $(DEFINES) $(INCLUDES) $(CFLAGS) $(LDFLAGS) -o $@ $+ -ldl
 
 src/make-data: src/make-data.o
-	$(CC) $(DEFINES) $(INCLUDES) -o $@ $+
+	$(CC) $(DEFINES) $(INCLUDES) $(CFLAGS) $(LDFLAGS) -o $@ $+

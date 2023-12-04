@@ -2,14 +2,15 @@
 all: build-all
 
 TOP_SRCDIR = .
-MODULES := src src/tests jsc/tests
+MODULES := src src/tests jsc/tests examples
 
 ALL_TARGETS :=
 CLEAN_TARGETS :=
 TESTS :=
-CFLAGS := -Wall -Wno-string-plus-int
+CFLAGS := -Wall -Wno-string-plus-int -g
 DEFINES :=
-INCLUDES := -I.
+INCLUDES := -I. -Isrc
+LDFLAGS := -Lsrc -g
 
 
 -include $(patsubst %,$(TOP_SRCDIR)/%/module.mk,$(MODULES))

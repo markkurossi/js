@@ -1,7 +1,10 @@
 *.o
 *~
+*.dSYM
 
 jsc/bak
 src/js
 src/libjs.a
 src/make-data
+examples/simple
+examples/ieval

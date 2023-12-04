@@ -1,5 +1,7 @@
 /*
  * An example how to embed the JavaScript interpreter to your program.
+ *
+ * Copyright (c) 2023 Markku Rossi <mtr@iki.fi>
  * Copyright (c) 1998-1999 New Generation Software (NGS) Oy
  *
  * Author: Markku Rossi <mtr@ngs.fi>
@@ -29,6 +31,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include <js.h>
 
@@ -206,7 +209,9 @@ hello_msg (JSClassPtr cls, void *instance_context, JSInterpPtr interp,
   else
     msg = js_class_context (cls);
 
-  js_type_make_string (interp, value, msg, strlen (msg));
+  js_type_make_string (interp, value, (unsigned char *) msg, strlen (msg));
+
+  return JS_OK;
 }
 
 
