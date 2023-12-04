@@ -18,4 +18,4 @@ clean:
 	rm -f $(CLEAN_TARGETS) $(ALL_TARGETS)
 
 %.o : %.c
-	$(CC) -Wall $(DEFINES) $(INCLUDES) -c -o $@ $<
+	$(CC) -Wall -Wno-string-plus-int $(DEFINES) $(INCLUDES) -c -o $@ $<
