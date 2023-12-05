@@ -46,22 +46,26 @@
 
 /* Package name. */
 #ifndef PACKAGE
-#undef PACKAGE
+#define PACKAGE "js"
 #endif /* no PACKAGE */
 
 /* Version number. */
 #ifndef VERSION
-#undef VERSION
+#define VERSION "0.2.5"
 #endif /* no VERSION */
 
 /* Are C prototypes supported. */
-#undef PROTOTYPES
+#define PROTOTYPES 1
 
 /* Canonical host name and its parts. */
-#undef CANONICAL_HOST
-#undef CANONICAL_HOST_CPU
-#undef CANONICAL_HOST_VENDOR
-#undef CANONICAL_HOST_OS
+#ifdef __APPLE__
+#define CANONICAL_HOST "i386-apple-darwin"
+#define CANONICAL_HOST_CPU "i386"
+#define CANONICAL_HOST_VENDOR "apple"
+#define CANONICAL_HOST_OS "Darwin"
+#else
+#error CANONICAL_{HOST,_{CPU,VENDOR,OS}} not defined
+#endif
 
 /* Do we want to build all instruction dispatchers? */
 #undef ALL_DISPATCHERS

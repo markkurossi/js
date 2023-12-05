@@ -1,6 +1,8 @@
 
 all: build-all
 
+include config.mk
+
 TOP_SRCDIR = .
 MODULES := src src/tests jsc/tests examples
 
@@ -12,7 +14,6 @@ DEFINES :=
 INCLUDES := -I. -Isrc
 LDFLAGS := -Lsrc -g
 SO_LDFLAGS := $(LDFLAGS) -shared
-
 
 -include $(patsubst %,$(TOP_SRCDIR)/%/module.mk,$(MODULES))
 
