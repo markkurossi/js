@@ -18,6 +18,12 @@ AC_HAVE_HEADERS(string.h stdlib.h unistd.h errno.h float.h limits.h)
 
 AC_CHECK_FUNCS(srand48 drand48 sleep usleep lstat)
 
+AC_CANONICAL_HOST
+AC_DEFINE_UNQUOTED(CANONICAL_HOST, "$host")
+AC_DEFINE_UNQUOTED(CANONICAL_HOST_CPU, "$host_cpu")
+AC_DEFINE_UNQUOTED(CANONICAL_HOST_VENDOR, "$host_vendor")
+AC_DEFINE_UNQUOTED(CANONICAL_HOST_OS, "$host_os")
+
 dnl Does the struct stat have st_blksize?
 AC_MSG_CHECKING([if struct stat has st_blksize])
 AC_TRY_COMPILE([
