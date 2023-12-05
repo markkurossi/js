@@ -816,14 +816,14 @@ js_vm_error (JSVirtualMachine *vm)
   file = js_vm_debug_position (vm, &ln);
   if (file)
     {
-      sprintf (error, "%s:%u: %s", file, ln, vm->error);
+      snprintf (error, sizeof(error), "%s:%u: %s", file, ln, vm->error);
       strcpy (vm->error, error);
     }
 
   if (vm->stacktrace_on_error)
     {
-      sprintf (error, "VM: error: %s%s", vm->error,
-	       JS_HOST_LINE_BREAK);
+      snprintf (error, sizeof(error), "VM: error: %s%s", vm->error,
+                JS_HOST_LINE_BREAK);
       js_iostream_write (vm->s_stderr, error, strlen (error));
 
       js_vm_stacktrace (vm, (unsigned int) -1);
