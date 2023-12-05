@@ -3,6 +3,8 @@ config.log
 config.mk
 config.status
 
+jsconfig.h
+
 *.o
 *~
 *.dSYM
